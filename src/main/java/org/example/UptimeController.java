@@ -1,4 +1,20 @@
 package org.example;
 
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/api/uptime")
 public class UptimeController {
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String calculateUptime(){
+        double minutesOfMonth = 60+24+30;
+        double definedUptimeInPercent = 99.95 /100;
+        double uptimeInMinutes = minutesOfMonth + definedUptimeInPercent;
+        return String.format("%.2f",uptimeInMinutes);
+    }
 }
